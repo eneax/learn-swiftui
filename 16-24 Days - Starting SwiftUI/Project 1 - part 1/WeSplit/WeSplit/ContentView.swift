@@ -16,6 +16,7 @@ struct ContentView: View {
     let students = ["Harry", "Hermione", "Ron"]
     @State private var selectedStudent = "Harry"
     
+    // Whenever an @State property changes, Swift re-invokes the body property
     var body: some View {
         // Add navigation bar at the top
         NavigationStack {
