@@ -51,6 +51,10 @@ struct ContentView: View {
     @State private var selectedQuestions = 5
     
     @State private var score = 0
+    
+    @State private var correctAnswers = 0
+    @State private var wrongAnswers = 0
+    
     @State private var questionCount = 0
     @State private var questions: [(Int, Int)] = []
     @State private var userAnswer = ""
@@ -112,10 +116,22 @@ struct ContentView: View {
                     Spacer()
                 } else {
                     if questionCount < questions.count {
-                        VStack(spacing: 15) {
-                            Text("Question \(questionCount + 1) of \(selectedQuestions)")
-                                .foregroundStyle(.secondary)
-                                .font(.subheadline.weight(.heavy))
+                        VStack(spacing: 30) {
+                            VStack(spacing: 10) {
+                                Text("Question \(questionCount + 1) of \(selectedQuestions)")
+                                    .foregroundStyle(.secondary)
+                                    .font(.subheadline.weight(.heavy))
+                                
+                                HStack {
+                                    Text("✅ \(correctAnswers)")
+                                        .foregroundStyle(.secondary)
+                                        .font(.subheadline.weight(.heavy))
+                                    
+                                    Text("❌ \(wrongAnswers)")
+                                        .foregroundStyle(.secondary)
+                                        .font(.subheadline.weight(.heavy))
+                                }
+                            }
                             
                             Text("\(questions[questionCount].0) x \(questions[questionCount].1) = ?")
                                 .font(.system(size: 40))
@@ -205,6 +221,9 @@ struct ContentView: View {
         
         if answer == correctAnswer {
             score += 1
+            correctAnswers += 1
+        } else {
+            wrongAnswers += 1
         }
         
         withAnimation {
@@ -226,6 +245,8 @@ struct ContentView: View {
     func resetGame() {
         questionCount = 0
         score = 0
+        correctAnswers = 0
+        wrongAnswers = 0
         showingFinalScore = false
         selectedTable = 2
         selectedQuestions = 5
