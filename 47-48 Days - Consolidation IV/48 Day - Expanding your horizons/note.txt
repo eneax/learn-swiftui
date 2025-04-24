@@ -1,0 +1,6 @@
+Day 48 of the #100DaysOfSwiftUI
+https://www.hackingwithswift.com/100/swiftui/48
+
+Today I had a chance to watch the amazing talk "What Star Wars Can Teach Us About Swift" from Nextdoor 2018.
+
+Then I enjoyed Woz's beautiful message about coding and creativity in our daily work.
